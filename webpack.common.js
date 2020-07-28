@@ -3,6 +3,8 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 
 module.exports = {
   entry: './src/main.js',
@@ -11,9 +13,14 @@ module.exports = {
     filename: 'js/bundle.js'
   },
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: [
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader'
@@ -22,7 +29,8 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
-    }]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,5 +41,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/bundle.css'
     }),
+    new VueLoaderPlugin()
   ]
 };
