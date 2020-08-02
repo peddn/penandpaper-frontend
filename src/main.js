@@ -1,13 +1,13 @@
-//require('./main.scss');
-
 import Vue from 'vue';
-
+import router from './router.js';
+import store from './store/store.js';
 import App from './components/App.vue';
-//import store from './store'
 
+Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
-  //store,
+  router,
+  store,
   render: h => h(App)
-})
+});

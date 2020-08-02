@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Hello Bulma!',
+      title: 'pen and paper',
       template: 'src/index.html'
     }),
     new CleanWebpackPlugin(),
