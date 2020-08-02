@@ -10,7 +10,7 @@
 export default {
     computed: {
         email() {
-            return this.$store.state.
+            return this.$store.state.user.email;
         }
     }
 };

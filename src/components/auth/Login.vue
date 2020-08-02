@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     loginHandler() {
-      this.$store.dispatch('auth/login', {
+      this.$store.dispatch('user/login', {
         email: this.email,
         password: this.password
       });

@@ -1,4 +1,4 @@
-import AuthApi from '../../api/AuthApi.js';
+import UserApi from '../../api/UserApi.js';
 
 // initial state
 const state = () => ({
@@ -8,7 +8,8 @@ const state = () => ({
     createdAt: '',
     email: '',
     role: {},
-    username: ''
+    username: '',
+    jwt: ''
 })
 
 // getters
@@ -19,7 +20,7 @@ const getters = {
 // actions
 const actions = {
   async login({ commit }, credentials) {
-    let data = await AuthApi.login(credentials);
+    let data = await UserApi.login(credentials);
     if (data.error) {
       commit(
         'app/pushFlash',
@@ -41,13 +42,14 @@ const actions = {
 // mutations
 const mutations = {
   login(state, data) {
-    state.user.id = data.user.id;
-    state.user.blocked = data.user.blocked;
-    state.user.confirmed = data.user.confirmed;
-    state.user.createdAt = data.user.created_at;
-    state.user.email = data.user.email;
-    state.user.role = data.user.role;
-    state.user.username = data.user.username;
+    state.id = data.user.id;
+    state.blocked = data.user.blocked;
+    state.confirmed = data.user.confirmed;
+    state.createdAt = data.user.created_at;
+    state.email = data.user.email;
+    state.role = data.user.role;
+    state.username = data.user.username;
+    state.jwt = data.jwt;
   }
 }
 
