@@ -1,17 +1,15 @@
 // initial state
 const state = () => ({
-  flashs: []
-})
+  flashs: [],
+  authenticated: false,
+  jwt: ''
+});
 
 // getters
 const getters = {
-
-}
-
-// actions
-
-const actions = {
-
+  isAuthenticated: (state) => {
+    return state.authenticated;
+  }
 }
 
 // mutations
@@ -21,6 +19,14 @@ const mutations = {
     setTimeout(() => {
       state.flashs.pop();
     }, 2000);
+  },
+  login(state, data) {
+    state.jwt = data.jwt;
+    state.authenticated = true;
+  },
+  logout(state) {
+    state.authenticated = false;
+    state.jwt = '';
   }
 }
 
@@ -28,6 +34,5 @@ export default {
   namespaced: true,
   state,
   getters,
-  actions,
   mutations
 }

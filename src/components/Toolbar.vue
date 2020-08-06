@@ -2,9 +2,9 @@
   <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <router-link class="navbar-item" to="/" exact-active-class="is-active">
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-        </a>
+        </router-link>
 
         <a
           role="button"
@@ -21,28 +21,29 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <router-link class="navbar-item" to="/character">Character</router-link>
+          <router-link class="navbar-item" to="/characters/play" exact-active-class="is-active">Characters</router-link>
+          <router-link class="navbar-item" to="/locations" exact-active-class="is-active">Locations</router-link>
+          <router-link class="navbar-item" to="/campaigns" exact-active-class="is-active">Campaigns</router-link>
+          <router-link class="navbar-item" to="/adventures" exact-active-class="is-active">Adventures</router-link>
+          <router-link class="navbar-item" to="/groups" exact-active-class="is-active">Groups</router-link>
 
-          <a class="navbar-item">Documentation</a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">More</a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">About</a>
-              <a class="navbar-item">Jobs</a>
-              <a class="navbar-item">Contact</a>
-              <hr class="navbar-divider" />
-              <a class="navbar-item">Report an issue</a>
-            </div>
-          </div>
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link class="button" to="/login"><strong>Login</strong></router-link>
-              <router-link class="button" to="/profile"><strong>Profile</strong></router-link>
+              <template v-if="isAuthenticated">
+                <router-link class="button" to="/profile">
+                  <strong>Profile</strong>
+                </router-link>
+                <a class="button">
+                  <strong>logout</strong>
+                </a>
+              </template>
+
+              <router-link class="button" to="/login" v-else>
+                <strong>Login</strong>
+              </router-link>
             </div>
           </div>
         </div>
@@ -52,7 +53,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters["app/isAuthenticated"];
+    },
+  },
+};
 </script>
 
 <style lang="scss">

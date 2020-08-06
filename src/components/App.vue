@@ -21,18 +21,20 @@ export default {
   computed: {
     flashs() {
       return this.$store.state.app.flashs;
-    },
+    }
   },
   beforeCreate() {
-    if (sessionStorage.jwt === undefined) {
-      console.log("noch nicht eingeloggt");
-    } else {
-      console.log(sessionStorage.jwt);
-    }
-
     // dispatch all api calls for the needed data
-    this.$store.dispatch("character/getCharacter");
+    //this.$store.dispatch("character/getCharacter");
   },
+  updated() {
+    const flashCount = this.$store.state.app.flashs.length;
+    if(flashCount > 0) {
+      console.log(this.$store.state.app.flashs[flashCount-1])
+    }
+    
+  }
+
 };
 </script>
 
@@ -42,6 +44,9 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Overlock&display=swap");
 
 @import "~bulma/bulma";
+@import "~@creativebulma/bulma-tooltip";
+
+
 
 .charname {
   font-family: "Overlock", cursive;

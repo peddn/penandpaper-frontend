@@ -16,7 +16,7 @@ const state = () => ({
   herkunft: '',
   geschlecht: '',
   abenteurertyp: ''
-})
+});
 
 // getters
 const getters = {
@@ -34,7 +34,6 @@ const actions = {
 // mutations
 const mutations = {
   setCharacter (state, character) {
-    console.log(character);
     state.portrait = character.portrait.url;
     state.name = character.name;
     state.rasse = character.rasse;
@@ -47,6 +46,9 @@ const mutations = {
     state.herkunft = character.herkunft;
     state.geschlecht = character.geschlecht;
     state.abenteurertyp = character.abenteurertyp;
+  },
+  setCharacters(state, characters) {
+    console.log(characters);
   }
 }
 

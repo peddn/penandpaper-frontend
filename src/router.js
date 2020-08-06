@@ -1,20 +1,65 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Character from './components/character/Character.vue';
-import Showcase from './components/Showcase.vue';
-import Login from './components/auth/Login.vue';
-import Profile from './components/user/Profile.vue';
+import Showcase from './components/showcase/Showcase.vue';
+
+import Characters from './components/characters/Characters.vue';
+import CharactersPlay from './components/characters/play/Play.vue';
+import CharactersCreate from './components/characters/create/Create.vue';
+import CharactersImprove from './components/characters/improve/Improve.vue';
+import CharactersEquip from './components/characters/equip/Equip.vue';
+
+import Locations from './components/locations/Locations.vue';
+
+import Campaigns from './components/campaigns/Campaigns.vue';
+
+import Adventures from './components/adventures/Adventures.vue';
+
+import Groups from './components/groups/Groups.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
     { path: '/', component: Showcase },
-    { path: '/login', component: Login },
-    { path: '/profile', component: Profile },
-    { path: '/character', component: Character }
+    {
+        path: '/characters', component: Characters,
+        children: [
+            {
+                path: 'play',
+                component: CharactersPlay
+            },
+            {
+                path: 'create',
+                component: CharactersCreate
+            },
+            {
+                path: 'improve',
+                component: CharactersImprove
+            },
+            {
+                path: 'equip',
+                component: CharactersEquip
+            }
+        ]
+    },
+    {
+        path: '/locations', component: Locations,
+        children: []
+    },
+    {
+        path: '/campaigns', component: Campaigns,
+        children: []
+    },
+    {
+        path: '/adventures', component: Adventures,
+        children: []
+    },
+    {
+        path: '/groups', component: Groups,
+        children: []
+    }
 ]
 
-export default  new VueRouter({
+export default new VueRouter({
     routes // short for `routes: routes`
 });

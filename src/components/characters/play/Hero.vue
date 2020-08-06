@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { BACKEND_URL } from "../../config.js";
+import { BACKEND_URL } from "../../../config.js";
 
 // TODO move in util file
 function capitalizeFirstLetter(str) {
