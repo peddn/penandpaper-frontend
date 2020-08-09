@@ -7,6 +7,12 @@
             <div class="navbar-start">
               <div class="navbar-item">
                 <div class="buttons">
+                  <router-link class="button is-success" to="/characters/sheet">
+                    <span class="icon">
+                      <i class="fas fa-address-card"></i>
+                    </span>
+                    <span>Sheet</span>
+                  </router-link>
                   <router-link class="button is-success" to="/characters/play">
                     <span class="icon">
                       <i class="fas fa-dice"></i>
@@ -31,6 +37,7 @@
                     </span>
                     <span>Equip</span>
                   </router-link>
+                  <a class="button" v-on:click="clickHandler">click</a>
                 </div>
               </div>
             </div>
@@ -44,7 +51,14 @@
 
 <script>
 export default {
-
+  beforeCreate() {
+    this.$store.dispatch('characters/getCharactersByUserId', 1);
+  },
+  methods: {
+    clickHandler() {
+      console.log(this.$store.getters['characters/getOpenedCharactersByModule']('play'));
+    }
+  }
 };
 </script>
 

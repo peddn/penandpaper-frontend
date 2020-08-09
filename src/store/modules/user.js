@@ -13,7 +13,7 @@ const initialState = {
 };
 
 // initial state
-const state = () => ( initialState );
+const state = () => (initialState);
 
 // getters
 const getters = {
@@ -44,12 +44,15 @@ const actions = {
           { jwt: data.jwt },
           { root: true }
         );
+        for (let char of data.user.characters) {
+          commit(
+            'character/addCharacter',
+            char,
+            { root: true }
+          );
+        }
         // commit the characters to the characters state
-        commit(
-          'character/setCharacters',
-          { characters: data.user.characters },
-          { root: true }
-        );
+
         router.push('profile');
       }
     }

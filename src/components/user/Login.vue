@@ -37,13 +37,11 @@
 </template>
 
 <script>
-import { BACKEND_URL } from "../../config.js";
-
 export default {
   data() {
     return {
       email: "",
-      password: "",
+      password: ""
     };
   },
   computed: {

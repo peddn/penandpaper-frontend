@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import Showcase from './components/showcase/Showcase.vue';
 
 import Characters from './components/characters/Characters.vue';
+import CharactersSheet from './components/characters/sheet/Sheet.vue';
 import CharactersPlay from './components/characters/play/Play.vue';
 import CharactersCreate from './components/characters/create/Create.vue';
 import CharactersImprove from './components/characters/improve/Improve.vue';
@@ -17,6 +18,9 @@ import Adventures from './components/adventures/Adventures.vue';
 
 import Groups from './components/groups/Groups.vue';
 
+import UserLogin from './components/user/Login.vue';
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -24,6 +28,10 @@ const routes = [
     {
         path: '/characters', component: Characters,
         children: [
+            {
+                path: 'sheet',
+                component: CharactersSheet
+            },
             {
                 path: 'play',
                 component: CharactersPlay
@@ -57,7 +65,8 @@ const routes = [
     {
         path: '/groups', component: Groups,
         children: []
-    }
+    },
+    { path: '/login', component: UserLogin },
 ]
 
 export default new VueRouter({

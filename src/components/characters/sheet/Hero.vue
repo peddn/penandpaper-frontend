@@ -122,8 +122,7 @@ export default {
       return this.$store.state.character.name;
     },
     characterPortrait() {
-      let path = this.$store.state.character.portrait.substr(1);
-      return BACKEND_URL + path;
+      return BACKEND_URL + this.$store.state.character.portrait;
     },
     characterDescription() {
       let description = "";

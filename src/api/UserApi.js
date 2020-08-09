@@ -1,6 +1,6 @@
 import { BACKEND_URL } from '../config.js';
 
-const endpoint = 'auth/local';
+const endpoint = '/auth/local';
 
 export default class UserApi {
     static async login(credentials) {
